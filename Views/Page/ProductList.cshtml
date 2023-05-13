@@ -1,0 +1,24 @@
+
+<div class="d-flex flexwrap justify-content-evenly contents">
+
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<script>
+    $.ajax("../api/NewAPI/getAllProduct")
+    .done(function(result){
+        var template = document.querySelector("template");
+        var parent = document.querySelector(".contents");
+
+        result.forEach(function(item){
+
+            var cloned = template.content.cloneNode(true);
+            cloned.querySelector("card-title").innetText = item.name;
+            cloned.querySelector("card-subtitle").innetText = item.categoryname;
+            
+            parent.append(cloned);
+
+        })
+    })
+</script>

@@ -25,7 +25,7 @@ namespace JengApp.Controllers
               var prods = (
                 from p in _context.Products
                 join c in _context.Categories
-                on Int32.Parse( p.Category) equals c.Id
+                on  p.Category equals c.Id
                 select new ProductViewModel{
                      Id = p.Id,
                     Category = c.Id,

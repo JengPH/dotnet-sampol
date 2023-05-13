@@ -29,7 +29,7 @@ namespace JengApp.Controllers
             (
                 from c in _context.Categories
                 join p in _context.Products
-                on c.Id.ToString() equals p.Category
+                on c.Id equals p.Category
 
                 select new categoryProdView
                 {

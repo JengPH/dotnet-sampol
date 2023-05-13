@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4Qihntu87YMO6xvCggG0AwKQ+DRmsPKG321hZRbi3Fo=",
+  "Hash": "hDXkV8uZ4ccKA1FT2E3lMqWU+mucfE1CArK6LsZdDmY=",
   "Source": "JengApp",
   "BasePath": "_content/JengApp",
   "Mode": "Default",
@@ -882,6 +882,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
+    },
+    {
+      "Identity": "C:\\Users\\Jeng\\Documents\\CRUD Midterm\\JengApp\\wwwroot\\lib\\FontAwesome\\all.min.css",
+      "SourceId": "JengApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Jeng\\Documents\\CRUD Midterm\\JengApp\\wwwroot\\",
+      "BasePath": "_content/JengApp",
+      "RelativePath": "lib/FontAwesome/all.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\FontAwesome\\all.min.css"
+    },
+    {
+      "Identity": "C:\\Users\\Jeng\\Documents\\CRUD Midterm\\JengApp\\wwwroot\\lib\\FontAwesome\\all.min.js",
+      "SourceId": "JengApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Jeng\\Documents\\CRUD Midterm\\JengApp\\wwwroot\\",
+      "BasePath": "_content/JengApp",
+      "RelativePath": "lib/FontAwesome/all.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\FontAwesome\\all.min.js"
     },
     {
       "Identity": "C:\\Users\\Jeng\\Documents\\CRUD Midterm\\JengApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",

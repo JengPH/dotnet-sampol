@@ -44,8 +44,7 @@ namespace JengApp.Models
 
                 entity.Property(e => e.Name)
                     .IsRequired()
-                    .HasMaxLength(500)
-                    .HasColumnName("name");
+                    .HasMaxLength(500);
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -57,8 +56,7 @@ namespace JengApp.Models
                     .HasColumnName("id");
 
                 entity.Property(e => e.Category)
-                    .IsRequired()
-                    .HasMaxLength(250)
+                    .HasColumnType("int(250)")
                     .HasColumnName("category");
 
                 entity.Property(e => e.Name)
