@@ -1,0 +1,133 @@
+﻿@* @model IEnumerable<JengApp.ViewModel.categoryProdView> *@
+
+@{
+    ViewData["Title"] = "PRODUCT LIST";
+}
+
+<center><h2>@ViewData["Title"]</h2></center>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New Product</a>
+</p>
+
+        @* bootstrap css *@
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+        <div class="tableContainer">
+            <h1 class = "title text-center py 4">Jeng</h1>
+
+            <div class= "row">
+                <div class="col-md-6 d-flex justify-content-center"></div>
+
+                <div class="col-md-6 d-flex justtify-content-center"></div>
+            </div>
+           
+
+        
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  
+        <template>
+            <div class="card m-2 cb1 text-center" style="position:relative; display:inline-block;" >
+                   <center><h1> <div class="card-title"></div></h1></center>
+                <div class="card-body">
+                </div>
+            </div>
+        </template>
+            <div class="parent"></div>
+
+
+
+
+
+
+
+
+
+     <style>
+        body{
+            background-image: url('../bg pic.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            color: white;
+           
+        }
+        .btn{
+            margin: 2px;
+        }
+        .title{
+            margin: 0 auto;
+            width: 100%;
+            max-width: 40rem;
+            font-size: 4rem;
+            text-align: center;
+        }
+        .card{
+            width: 90%;
+            max-width: 400px;
+            padding: 5rem 2.5rem;
+            
+            border-radius: 1rem;
+            border: 1px solid transparent;
+
+            backdrop-filter: blur(1rem);
+            box-shadow: 1.3rem 1.3rem 1.3rem (0,0,0,0.5);
+
+            border-top-color: rgba(255,255,255,0.5);
+            border-left-color: rgba(255,255,255,0.5);
+            border-bottom-color: rgba(255,255,255,0.1);
+            border-right-color: rgba(255,255,255,0.1);
+
+            transition: 0.2s;
+        }
+
+        .cb1{
+            background-color: rgba(255,255,255,0.1);
+        }
+        .cb2{
+            color: black;
+            background: linear-gradient(to right bottom rgba(225,225,225,0.5),rgba(225,225,225,0.3))
+        }
+        .card-number{
+            color: rgba(225, 225, 225, 0.08);
+            font-size: 8rem;
+            z-index: -1;
+            position: absolute;
+            top: -1rem;
+            right: 2.5rem;  
+        }
+        .card:hover
+        {
+            transform: scale(1.1);
+        }
+
+     </style>
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $.ajax("../api/newapi/getAllProduct").done(function(result)
+    {
+        result.forEach(function(item)
+        {
+            var template = document.querySelector("template");
+            var parent = document.querySelector(".parent");
+
+            var cloned = template.content.cloneNode(true);
+            cloned.querySelector(".card .card-title").innerHTML = item.name;
+            cloned.querySelector(".card .card-body").innerHTML = "Category Name: " + item.category
+            + "<br>" + "Units: " + item.units
+            + "<br>" + "Stock: " + item.stocks
+            + "<br>" + "Price: " + item.price
+            + "<br>" + "Status: " + item.status;
+
+
+            parent.append(cloned);  
+
+            @* var p = document.createElement("p").innerText = item.id;
+            $("body").append(p+"<br>"); *@
+        });
+    });
+</script>

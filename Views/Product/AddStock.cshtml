@@ -1,0 +1,81 @@
+@model JengApp.Models.Product
+
+@{
+    ViewData["Title"] = "Add Stocks";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+    <form asp-action="AddStock">
+        <input type="hidden" asp-for="Category" />
+        <input type="hidden" asp-for="Name" />
+        <input type="hidden" asp-for="Units" />
+        <input type="hidden" asp-for="Price" />
+        <input type="hidden" asp-for="Status" />
+        <input type="hidden" name="cStock" value="@Model.Stock" />
+        <input type="hidden" name="dateVal" value="@DateTime.Now">
+
+        <div class="card m-2 cb1 text-center" style="width: 18rem;">
+            <div class="card-body">
+                <div class="card-title">
+                    <h5>@Model.Name</h5>
+                    <br>
+                    Current Stock : @Model.Stock
+                </div>
+                <hr/>
+                <div class="form-group">
+                    <label asp-for="Stock" class="control-label"></label>
+                    <input type="number" placeholder="Input stocks to add" name="Stock" class="form-control" />
+                    <span asp-validation-for="Stock" class="text-danger"></span>
+                </div>
+                <hr/>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+<style>
+       body{
+            background-image: url('../../bg pic.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            color: white;
+           
+        } 
+           .card{
+            width: 90%;
+            max-width: 400px;
+            padding: 5rem 2.5rem;
+            
+            border-radius: 1rem;
+            border: 1px solid transparent;
+
+            backdrop-filter: blur(1rem);
+            box-shadow: 1.3rem 1.3rem 1.3rem (0,0,0,0.5);
+
+            border-top-color: rgba(255,255,255,0.5);
+            border-left-color: rgba(255,255,255,0.5);
+            border-bottom-color: rgba(255,255,255,0.1);
+            border-right-color: rgba(255,255,255,0.1);
+        }
+
+        .cb1{
+            background-color: rgba(255,255,255,0.1);
+        }
+        .cb2{
+            color: black;
+            background: linear-gradient(to right bottom rgba(225,225,225,0.5),rgba(225,225,225,0.3))
+        }   
+</style>
+</html>

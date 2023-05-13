@@ -1,0 +1,72 @@
+@model IEnumerable<JengApp.Models.Stockhistory>
+
+@{
+    ViewData["Title"] = "ADDED STOCK HISTORY";
+}
+
+
+        <a asp-action="Index" class="btn btn-primary">Back to List</a>
+        <center><h4>@ViewData["Title"]</h4></center>
+
+        <center>
+        <div class= "card m-2 cb1 text-center" style="position:relative; display:inline-block;">
+            <div class="card-body">
+                <div class="card-title">
+                    <h5>@ViewBag.nameProd.Name</h5>
+                    <br>
+                    <b><dd>Current Stock : @ViewBag.nameProd.Stock</dd></b>
+                </div>
+                <hr/>
+                <dd>@ViewBag.sList</dd>
+                <div class="card-text">
+                 @foreach (var item in Model)
+                    {
+                        if(@item.AddedStock > 1)
+                        {
+                            <p> Added <b>@item.AddedStock stocks</b> on <b>@item.Date</b></p>
+                        }
+                        else
+                        {
+                            <p> Added <b>@item.AddedStock stock</b> on <b>@item.Date</b></p>
+                        }
+                        <hr/>
+                    }
+                </div>
+            </div>
+        </div>
+        </center>
+  
+    <style>
+       body{
+            background-image: url('../../bg pic.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            color: white;
+           
+        } 
+         .card{
+            width: 90%;
+            max-width: 400px;
+            padding: 5rem 2.5rem;
+            
+            border-radius: 1rem;
+            border: 1px solid transparent;
+
+            backdrop-filter: blur(1rem);
+            box-shadow: 1.3rem 1.3rem 1.3rem (0,0,0,0.5);
+
+            border-top-color: rgba(255,255,255,0.5);
+            border-left-color: rgba(255,255,255,0.5);
+            border-bottom-color: rgba(255,255,255,0.1);
+            border-right-color: rgba(255,255,255,0.1);
+        }
+
+        .cb1{
+            background-color: rgba(255,255,255,0.1);
+        }
+        .cb2{
+            color: black;
+            background: linear-gradient(to right bottom rgba(225,225,225,0.5),rgba(225,225,225,0.3))
+        }
+    </style>

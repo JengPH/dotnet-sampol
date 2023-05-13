@@ -1,0 +1,102 @@
+@model JengApp.Models.Product
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="card m-2 cb1 text-center" style="position:relative; display:inline-block;">
+            <dl class="cardform">
+                <h2>@ViewData["Title"]</h2>
+                <dt class = "fgroup 1">
+                    @Html.DisplayNameFor(model => model.Category)
+                </dt>
+                <dd class = "fgroup 2">
+                    @Html.DisplayFor(model => model.Category)
+                </dd>
+                <dt class = "fgroup 3">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class = "fgroup 3">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class = "fgroup 4">
+                    @Html.DisplayNameFor(model => model.Units)
+                </dt>
+                <dd class = "fgroup 5">
+                    @Html.DisplayFor(model => model.Units)
+                </dd>
+                <dt class = "fgroup 6">
+                    @Html.DisplayNameFor(model => model.Stock)
+                </dt>
+                <dd class = "fgroup 7">
+                    @Html.DisplayFor(model => model.Stock)
+                </dd>
+                <dt class = "fgroup 8">
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd class = "fgroup 9">
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt class = "fgroup 10">
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+                <dd class = "fgroup 11">
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+
+                <br><br>
+                <div class="buttonDown">
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                    |
+                    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+                </div>
+            </dl>
+        </div>
+</body>
+<style>
+       body{
+            background-image: url('../../bg pic.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            color: white;
+           
+        } 
+         .card{
+            width: 90%;
+            max-width: 400px;
+            padding: 5rem 2.5rem;
+            
+            border-radius: 1rem;
+            border: 1px solid transparent;
+
+            backdrop-filter: blur(1rem);
+            box-shadow: 1.3rem 1.3rem 1.3rem (0,0,0,0.5);
+
+            border-top-color: rgba(255,255,255,0.5);
+            border-left-color: rgba(255,255,255,0.5);
+            border-bottom-color: rgba(255,255,255,0.1);
+            border-right-color: rgba(255,255,255,0.1);
+        }
+         .cb1{
+            background-color: rgba(255,255,255,0.1);
+        }
+        .cb2{
+            color: black;
+            background: linear-gradient(to right bottom rgba(225,225,225,0.5),rgba(225,225,225,0.3))
+        }
+        .fgroup{
+            
+        }
+
+</style>
+</html>
