@@ -18409,6 +18409,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Jeng\\Documents\\CRUD Midterm\\JengApp\\Views\\Page\\Product.cshtml",
+      "TargetPath": "Views\\Page\\Product.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Jeng\\Documents\\CRUD Midterm\\JengApp\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
       "FileKind": "mvc"
@@ -18424,6 +18429,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Jeng\\Documents\\CRUD Midterm\\JengApp\\Views\\Page\\ProductList.cshtml",
+      "TargetPath": "Views\\Page\\ProductList.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Jeng\\Documents\\CRUD Midterm\\JengApp\\Views\\Product\\asd.cshtml",
       "TargetPath": "Views\\Product\\asd.cshtml",
       "FileKind": "mvc"
@@ -18431,6 +18441,11 @@
     {
       "FilePath": "c:\\Users\\Jeng\\Documents\\CRUD Midterm\\JengApp\\Views\\Product\\AddedStockHistory.cshtml",
       "TargetPath": "Views\\Product\\AddedStockHistory.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Jeng\\Documents\\CRUD Midterm\\JengApp\\Views\\Page\\ProductCard.cshtml",
+      "TargetPath": "Views\\Page\\ProductCard.cshtml",
       "FileKind": "mvc"
     },
     {

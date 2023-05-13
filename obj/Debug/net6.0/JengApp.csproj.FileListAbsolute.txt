@@ -1,11 +1,3 @@
-C:\Users\Jeng\Documents\CRUD Midterm\JengApp\obj\Debug\net6.0\JengApp.csproj.AssemblyReference.cache
-C:\Users\Jeng\Documents\CRUD Midterm\JengApp\obj\Debug\net6.0\JengApp.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Jeng\Documents\CRUD Midterm\JengApp\obj\Debug\net6.0\JengApp.AssemblyInfoInputs.cache
-C:\Users\Jeng\Documents\CRUD Midterm\JengApp\obj\Debug\net6.0\JengApp.AssemblyInfo.cs
-C:\Users\Jeng\Documents\CRUD Midterm\JengApp\obj\Debug\net6.0\JengApp.csproj.CoreCompileInputs.cache
-C:\Users\Jeng\Documents\CRUD Midterm\JengApp\obj\Debug\net6.0\JengApp.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Jeng\Documents\CRUD Midterm\JengApp\obj\Debug\net6.0\JengApp.RazorAssemblyInfo.cache
-C:\Users\Jeng\Documents\CRUD Midterm\JengApp\obj\Debug\net6.0\JengApp.RazorAssemblyInfo.cs
 C:\Users\Jeng\Documents\CRUD Midterm\JengApp\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\Jeng\Documents\CRUD Midterm\JengApp\bin\Debug\net6.0\appsettings.json
 C:\Users\Jeng\Documents\CRUD Midterm\JengApp\bin\Debug\net6.0\JengApp.staticwebassets.runtime.json
@@ -239,6 +231,14 @@ C:\Users\Jeng\Documents\CRUD Midterm\JengApp\bin\Debug\net6.0\runtimes\unix\lib\
 C:\Users\Jeng\Documents\CRUD Midterm\JengApp\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 C:\Users\Jeng\Documents\CRUD Midterm\JengApp\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Jeng\Documents\CRUD Midterm\JengApp\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\Jeng\Documents\CRUD Midterm\JengApp\obj\Debug\net6.0\JengApp.csproj.AssemblyReference.cache
+C:\Users\Jeng\Documents\CRUD Midterm\JengApp\obj\Debug\net6.0\JengApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jeng\Documents\CRUD Midterm\JengApp\obj\Debug\net6.0\JengApp.AssemblyInfoInputs.cache
+C:\Users\Jeng\Documents\CRUD Midterm\JengApp\obj\Debug\net6.0\JengApp.AssemblyInfo.cs
+C:\Users\Jeng\Documents\CRUD Midterm\JengApp\obj\Debug\net6.0\JengApp.csproj.CoreCompileInputs.cache
+C:\Users\Jeng\Documents\CRUD Midterm\JengApp\obj\Debug\net6.0\JengApp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Jeng\Documents\CRUD Midterm\JengApp\obj\Debug\net6.0\JengApp.RazorAssemblyInfo.cache
+C:\Users\Jeng\Documents\CRUD Midterm\JengApp\obj\Debug\net6.0\JengApp.RazorAssemblyInfo.cs
 C:\Users\Jeng\Documents\CRUD Midterm\JengApp\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\Jeng\Documents\CRUD Midterm\JengApp\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\Jeng\Documents\CRUD Midterm\JengApp\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css

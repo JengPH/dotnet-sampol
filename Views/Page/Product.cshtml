@@ -1,0 +1,60 @@
+@{
+    ViewData["Title"] = "Product Pages";
+}
+
+@Html.Partial("ProductCard.cshtml");
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addProdModal">
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="addProdModal" tabindex="-1"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="contents flex-row wrap justify-content"></div>
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $.ajax("../api/newapi/getAllProduct").done(function(result)
+    {
+        result.forEach(function(item)
+        {
+            var template = document.querySelector("template");
+            var parent = document.querySelector(".parent");
+
+            var cloned = template.content.cloneNode(true);
+            cloned.querySelector(".card .card-title").innerHTML = item.name;
+            cloned.querySelector(".card .card-body").innerHTML = "Category Name: " + item.category
+            + "<br>" + "Units: " + item.units
+            + "<br>" + "Stock: " + item.stocks
+            + "<br>" + "Price: " + item.price
+            + "<br>" + "Status: " + item.status;
+
+
+            parent.append(cloned);  
+
+            @* var p = document.createElement("p").innerText = item.id;
+            $("body").append(p+"<br>"); *@
+        });
+    });
+</script>
