@@ -1,7 +1,20 @@
 
+<button type="button" title="Add Product" class="btn btn-success" style="color: #ffffff;" data-bs-toggle="modal" data-bs-target="#addProdModal">
+  <i class="fa-solid fa-circle-plus" style="color: #ffffff;"></i>
+</button>
+
+
+@* <input type="checkbox" name="giatay" id="yawa"> *@
+
 
 @Html.Partial("Partial/ProductCard")
 @Html.Partial("Partial/ProductModalAdd")
+@Html.Partial("Partial/ProductModalUpdate")
+@Html.Partial("Partial/DeleteModal")
+@Html.Partial("Partial/ProductModalAddStock")
+@Html.Partial("Partial/ProductModalDetails")
+
+
 
 <div class="contents flex-row wrap justify-content"></div>
 
@@ -9,28 +22,327 @@
 <!-- Button trigger modal -->
 
 
-<script src=""></script>
+
 
 <script src="~/lib/jquery/dist/jquery.js"></script>
-<script>
-    $.ajax("../api/newapi/getAllProduct").done(function(result)
-    {      
-      
-      var template = document.querySelector("template");
-      var parent = document.querySelector(".contents");
 
+<script>
+    var selectedProdId;
+    var selectedProd;
+
+    $(document).ready(function(){
+    populateIndex();
+
+    //FOR POPULATING INDEX
+    var productList = {};
+    function populateIndex()
+    {
+
+    $.ajax("../api/newapi/getAllProduct")
+    .done(function(result)
+    {
+      productList = result;
         result.forEach(function(item)
         {
+            var template = document.querySelector("template#card-container");
+            var parent = document.querySelector(".parent");
             var cloned = template.content.cloneNode(true);
-            cloned.querySelector(".card .card-title").innerText = item.name;
-            cloned.querySelector(".card .card-subtitle").innerText = item.CategoryName;
-            cloned.querySelector(".card .card-stocks").innerText = item.stock;
-            cloned.querySelector(".card .card-units").innerText = item.units;
-            cloned.querySelector(".card .card-status").innerText = item.status;
+            //var p = document.createElement("p").innerText = item.name;
+            //$("body").append(p + "<br>");
 
-            
-            parent.append(cloned);  
+            cloned.querySelector(".card .card-title").innerHTML = item.name;
+            cloned.querySelector(".card .card-subtitle").innerHTML = "Category Name : " + item.categoryName
+            + "<br>" + "Units : " + item.units
+            + "<br>" + "Stock : " + item.stock
+            + "<br>" + "Price : " + item.price
+            + "<br>" + "Status : " + item.status
+            ;
+
+            cloned.querySelector(".updateProd").setAttribute("data-prodId", item.id);
+            cloned.querySelector(".updateProd").setAttribute("data-prodName", item.name);
+
+            cloned.querySelector(".deleteProd").setAttribute("data-prodId", item.id);
+            cloned.querySelector(".infoProd").setAttribute("data-prodId", item.id);
+            cloned.querySelector(".addStock").setAttribute("data-prodId", item.id);
+            cloned.querySelector(".stockHistory").setAttribute("data-prodId", item.id);
+
+            parent.prepend(cloned);
+       });
+    });
+    }
+
+
+     $.ajax("../api/newapi/getAllCategories")
+      .done(function(result){
+        var template = document.querySelector("template#categoryOptionTemplate");
+        //var parent = document.querySelectorAll("select[name=Category]");
+        var parent = document.querySelectorAll("#catSelect");
+        
+        for(i = 0; i < parent.length; i++){
+          result.forEach(function (item){
+            var cloned = template.content.cloneNode(true);
+            cloned.querySelector("option").value = item.id;
+            cloned.querySelector("option").innerText= item.name;
+
+            parent[i].prepend(cloned);
+          });
+        }
+    });
+
+      //CLEAR UPON CLOSING
+    $("#addProdClose").click(function(){
+      $("#addProdForm")[0].reset();
+    });
+
+
+    //SAVE ADDED PRODUCT
+    $("#saveProdBtn").click((e) =>
+    {
+      console.log("I was clicked");
+      //
+      var arrData = {};
+
+      var formInputs = $("#addProdForm").serializeArray();
+      formInputs.forEach(function(item)
+      {
+        arrData[item.name] = item.value;
+      });
+
+      //save using ajax
+      $.ajax
+      ({
+        url: "../api/newapi/addProduct",
+        type: "POST",
+        data:
+        {
+          p : arrData
+        },
+      })
+      .done(function()
+      {
+        location.reload(true);
+      });
+
+      $("#addProdModal").modal("toggle");
+      $("#addProdForm")[0].reset();
+    });
+
+    $(".updateProd").click(function()
+        {
+        $("#modalUpdate").modal("toggle");
+        });
+
+        $(".parent").delegate(".updateProd", "click", function (e){
+        var i = e.target.closest("a").getAttribute("data-prodId");
+        console.log("The value is " +i);
+        
+        if(i != null){
+            selectedProdId = i;
+            selectedProd = productList.find(element => element.id == i);
+
+            oFormObject = document.forms["updateProdForm"];
+            $("#modalUpdate").modal("toggle");
+            initForm(oFormObject, selectedProd);
+        }
+        });
+
+        function initForm(form, data){
+
+        Object.getOwnPropertyNames(data).forEach(function(item){
+
+          var currentElem = form.elements[item.charAt(0).toUpperCase() + item.slice(1)];
+
+          if( currentElem == null ){return;}
+
+          if(currentElem.tagName == "SELECT"){
+            var selectChildren = Array.from(currentElem.children);
+            var matchedOpt = selectChildren.find(opt => opt.value == selectedProd.category);
+            if(matchedOpt){
+              matchedOpt.selected = true;
+            }
+          }else{
+            form.elements[item.charAt(0).toUpperCase() + item.slice(1)].setAttribute("value",data[item]); 
+          }
+
+        if(data.status == "Active")
+        {
+            $('.stat').prop('checked', true);
+        }
+        
+        else
+          {
+            $('.stat').prop('checked', false);
+          }
+        });
+        }
+
+         $("#updateProdBtn").click((e) =>
+    {
+      var arrData = {};
+
+      var formInputs = $("#updateProdForm").serializeArray();
+      formInputs.forEach(function(item)
+      {
+        arrData[item.name] = item.value;
+      });
+
+      //attempts to give value to the data
+      arrData.id = selectedProdId;
+
+
+      //save using ajax
+      $.ajax
+      ({
+        url: "../api/newapi/updateProduct",
+        type: "POST",
+        data:
+        {
+          p : arrData
+        },
+      })
+      .done(function()
+      {
+        location.reload(true);
+      });
+
+      $("#modalUpdate").modal("toggle");
+      $("#updateProdForm")[0].reset();
+    });
+
+  //CLEAR UPDATE UPON CLOSE
+    $("#updateProdClose").click(function(){
+      $("#updateProdForm")[0].reset();
+    });
+
+    $(".parent").delegate(".deleteProd", "click", function(e){
+      var i = e.target.closest("a").getAttribute("data-prodId");
+      console.log(i);
+
+      if(i != null)
+      {
+        selectedProdId = i;
+        $("#modalDelete").modal("toggle");
+        //$("#modalProdInfo").modal("toggle");
+      }
+    });
+
+
+    //CONFIRM DELETE CLICKED
+    $("#deleteProdBtn").click((e) => {
+      //AJAX DELETE
+      $.ajax
+      ({
+        url: "../api/newapi/deleteProduct",
+        type: "POST",
+        data:
+        {
+          id : selectedProdId
+        },
+      })
+      .done(function()
+      {
+        location.reload(true);
+      });
+    });
+
+
+    //PRODUCT INFORMATION MODAL
+    $(".parent").delegate(".infoProd", "click", function(e){
+      var i = e.target.closest("a").getAttribute("data-prodId");
+      console.log(i);
+
+      if(i != null)
+      {
+        selectedProdId = i;
+        selectedProd = productList.find(element => element.id == i);
+        $("#modalProdInfo").modal("toggle");
+
+            $(".cardInfo .info-title").html(selectedProd.name);
+            $(".cardInfo .info-Category").html('Category Name : ' + selectedProd.categoryName);
+            $(".cardInfo .info-Units").html('Units : ' + selectedProd.units);
+            $(".cardInfo .info-Stocks").html('Stocks : ' + selectedProd.stock);
+            $(".cardInfo .info-Price").html('Price : ' + selectedProd.price);
+            $(".cardInfo .info-Status").html('Status : ' + selectedProd.status);
+
+
+        //UPDATE PROD INFO CLICKED
+        $("#updateProdInfoBtn").click((e) => {
+          $("#modalProdInfo").modal("toggle");
+
+          oFormObject = document.forms["updateProdForm"];
+          $("#modalUpdate").modal("toggle");
+          initForm(oFormObject, selectedProd);
+        });
+      }
+    });
+
+
+    //ADD STOCK
+    $(".parent").delegate(".addStock", "click", function(e){
+      var i = e.target.closest("a").getAttribute("data-prodId");
+      console.log(i);
+      
+      var cStock;
+      var inputStock;
+
+      if(i != null)
+      {
+        selectedProdId = i;
+        selectedProd = productList.find(element => element.id == i);
+
+        $("#modalStock").modal("toggle");
+
+            $(".cardInfo .info-title").html('Product Name: ' + selectedProd.name);
+            $(".cardInfo .info-Stocks").html('Current Stocks : ' + selectedProd.stock);
+
+
+        //GET THE DATA FROM MODAL
+        $("#addStockBtn").click((e) => {
+          //var arrData = {};
+
+/*
+          var formInputs = $("#addStockForm").serializeArray();
+          formInputs.forEach(function(item){
+            arrData[item.name] = item.value;
+          });*/
+
+          cStock = selectedProd.stock;
+          inputtedStock = $("#inputStock").val();
+
+          if(inputtedStock <= 0)
+          {
+            //$("#modalStock").modal("toggle");
+            console.log("Error try adding positive integers");
+          }
+          else
+          {
+            var date = new Date(Date.now());
+            var date1 = date.toLocaleString();
+            //AJAX ADD STOCK
+            $.ajax
+            ({
+              url: "../api/newapi/addStockProduct",
+              type: "POST",
+              data:
+              {
+                p : selectedProd,
+                iStock : inputtedStock,
+                date : date1.toString()
+              },
+            })
+            .done(function()
+            {
+              location.reload(true);
+            });
+
+            $("#modalStock").modal("toggle");
+          }
 
         });
+      }
+    });
+
+
+
     });
 </script>

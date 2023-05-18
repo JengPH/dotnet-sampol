@@ -1,27 +1,35 @@
+
+ <script src="~/lib/jquery/dist/jquery.js"></script>
+
+
 <template id="card-container">
     <div class="card" style="width: 18rem;">
         <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text card-stocks">Stocks</p>
-            <p class="card-text card-units">units</p>
-            <p class="card-text card-status">status</p>
-
-            
-
-            <a class="btn btn-outline-warning">
-                    <i class="fa-regular fa-circle-info"></i>
-            </a>
-
-            <a class = "btn btn-outline-success">
-                    <i class="fa-duotone fa-pen-to-square"></i>
-            </a>
-
-            <a class="btn btn-outline-danger">
-                        <i class="fa-solid fa-trash"></i>
-            </a>
 
         </div>
-    </div>
+        <a class="card-link btn btn-success updateProd" data-bs-toggle="tooltip" data-bs-placement="top" title="Update">
+                <i class="fa-solid fa-pen-to-square"></i>
+            </a>
 
+             <a class="btn btn-warning infoProd" title="Product Information">
+                <i class="fa-solid fa-circle-info" style="color: #ffffff;"></i>
+            </a>
+            
+            <a class="btn btn-success addStock" title="Add Stocks">
+               <i class="fa-solid fa-boxes-stacked " style="color: #ffffff;"></i>
+            </a>
+            
+              <a class="btn btn-primary stockHistory" title="View added stock history">
+                <i class="fa-solid fa-clipboard"></i>
+            </a>
+
+            <a class="btn btn-danger deleteProd" title="Delete">
+                <i class="fa-solid fa-trash"></i>
+            </a>
+    </div>
 </template>
+<div class="parent">
+        
+</div>
