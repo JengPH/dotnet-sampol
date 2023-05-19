@@ -120,7 +120,8 @@
       })
       .done(function()
       {
-        location.reload(true);
+       $(".parent").innerHTML ="";
+      populateIndex();
       });
 
       $("#addProdModal").modal("toggle");
@@ -202,7 +203,9 @@
       })
       .done(function()
       {
-        location.reload(true);
+       $(".parent").innerHTML ="";
+      populateIndex();
+
       });
 
       $("#modalUpdate").modal("toggle");
@@ -241,7 +244,8 @@
       })
       .done(function()
       {
-        location.reload(true);
+        $(".parent").innerHTML ="";
+      populateIndex();
       });
     });
 
@@ -332,7 +336,8 @@
             })
             .done(function()
             {
-              location.reload(true);
+             $(".parent").innerHTML ="";
+            populateIndex();
             });
 
             $("#modalStock").modal("toggle");
