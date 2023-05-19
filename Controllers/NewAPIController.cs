@@ -92,10 +92,26 @@ namespace JengApp.Controllers
 
         public ActionResult<List<Product>> viewStockHistory(int id){
             
-            //return _context.Products.ToList();
-            var res = _context.Stockhistories.ToList().Where(p => p.ProdId == id);
+            var res =
+            (
+                from s in _context.Stockhistories
+                join p in _context.Products
+                on s.ProdId equals p.Id
+                where p.Id == id
 
+
+                select new stockProdHistory
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    AStockId = s.AStockId,
+                    ProdId = p.Id,
+                    AddedStock = s.AddedStock,
+                    Date = s.Date
+                }
+            ).ToList();
+            
             return Ok(res);
+            }
         }     
     }
-}

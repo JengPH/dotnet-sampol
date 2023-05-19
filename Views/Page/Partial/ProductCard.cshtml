@@ -3,7 +3,7 @@
 
 
 <template id="card-container">
-    <div class="card" style="width: 18rem;">
+   <div class="card m-2 cb1 text-center" style="position:relative; display:inline-block;" >
         <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -33,3 +33,63 @@
 <div class="parent">
         
 </div>
+
+<style>
+ body{
+            background-image: url('../bg pic.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            color: white;
+           
+        }
+        .btn{
+            margin: 2px;
+        }
+        .title{
+            margin: 0 auto;
+            width: 100%;
+            max-width: 40rem;
+            font-size: 4rem;
+            text-align: center;
+        }
+        .card{
+            width: 90%;
+            max-width: 400px;
+            padding: 5rem 2.5rem;
+            
+            border-radius: 1rem;
+            border: 1px solid transparent;
+
+            backdrop-filter: blur(1rem);
+            box-shadow: 1.3rem 1.3rem 1.3rem (0,0,0,0.5);
+
+            border-top-color: rgba(255,255,255,0.5);
+            border-left-color: rgba(255,255,255,0.5);
+            border-bottom-color: rgba(255,255,255,0.1);
+            border-right-color: rgba(255,255,255,0.1);
+
+            transition: 0.2s;
+        }
+
+        .cb1{
+            background-color: rgba(255,255,255,0.1);
+        }
+        .cb2{
+            color: black;
+            background: linear-gradient(to right bottom rgba(225,225,225,0.5),rgba(225,225,225,0.3))
+        }
+        .card-number{
+            color: rgba(225, 225, 225, 0.08);
+            font-size: 8rem;
+            z-index: -1;
+            position: absolute;
+            top: -1rem;
+            right: 2.5rem;  
+        }
+        .card:hover
+        {
+            transform: scale(1.1);
+        }
+
+</style>

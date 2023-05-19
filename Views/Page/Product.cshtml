@@ -13,7 +13,7 @@
 @Html.Partial("Partial/DeleteModal")
 @Html.Partial("Partial/ProductModalAddStock")
 @Html.Partial("Partial/ProductModalDetails")
-
+@Html.Partial("Partial/ProductModalStockHistory")
 
 
 <div class="contents flex-row wrap justify-content"></div>
@@ -341,6 +341,68 @@
         });
       }
     });
+
+
+    //History Click
+       $(".parent").delegate(".stockHistory","click", function(e){
+      var i = e.target.closest("a").getAttribute("data-prodId");
+
+      if(i != null)
+      {
+        selectedProdId = i;
+        selectedProd = productList.find(element => element.id == i);
+        $("#modalStockHistory").modal("toggle");
+
+        $(".cardInfo .info-title").html(" " +  selectedProd.name);
+        $(".cardInfo .info-Stocks").html("Stocks: " +  selectedProd.stock);
+
+        $.ajax("../api/newapi/viewStockHistory")
+        .done(function(result)
+        {
+          $.ajax(
+            {
+              url: "../api/newapi/viewStockHistory",
+              type: "POST",
+              data:
+              {
+                id : selectedProdId
+              },
+            })
+          .done(function(result)
+          {
+            if(result.length == 0)
+            {
+              var template = document.querySelector("template#card-shing");
+              var parent = document.querySelector(".parentHistory");
+              var cloned = template.content.cloneNode(true);
+
+              cloned.querySelector(".stockHis").innerHTML = "NO ADDED STOCK FOUND <br>";
+
+              parent.prepend(cloned);
+            }
+            else
+            {
+              result.forEach(function(item)
+              {
+                var template = document.querySelector("template#card-shing");
+                var parent = document.querySelector(".parentHistory")
+                var cloned = template.content.cloneNode(true);
+
+                cloned.querySelector(".stockHis").innerHTML = "Added" + item.addedStock + " on " + item.date + "<hr>";
+
+                parent.prepend(cloned);
+              });
+            }
+          });
+
+        });
+      }
+    });
+
+      //close history
+      $("#modalStockHistoryClose").click(function(){
+        $(".stockContent").find("div.stockHis").text("");
+      }); 
 
 
 
