@@ -39,12 +39,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnZVxQYXJ0aWFsXFByb2R1Y3RNb2RhbEFkZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Jeng/Documents/CRUD Midterm/JengApp/Views/Page/Partial/ProductModalAddCart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnZVxQYXJ0aWFsXFByb2R1Y3RNb2RhbEFkZENhcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Jeng/Documents/CRUD Midterm/JengApp/Views/Page/Partial/ProductModalAddStock.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnZVxQYXJ0aWFsXFByb2R1Y3RNb2RhbEFkZFN0b2NrLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Jeng/Documents/CRUD Midterm/JengApp/Views/Page/Partial/ProductModalCartList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnZVxQYXJ0aWFsXFByb2R1Y3RNb2RhbENhcnRMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Jeng/Documents/CRUD Midterm/JengApp/Views/Page/Partial/ProductModalDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnZVxQYXJ0aWFsXFByb2R1Y3RNb2RhbERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Jeng/Documents/CRUD Midterm/JengApp/Views/Page/Partial/ProductModalRecordDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnZVxQYXJ0aWFsXFByb2R1Y3RNb2RhbFJlY29yZERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Jeng/Documents/CRUD Midterm/JengApp/Views/Page/Partial/ProductModalRecords.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnZVxQYXJ0aWFsXFByb2R1Y3RNb2RhbFJlY29yZHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Jeng/Documents/CRUD Midterm/JengApp/Views/Page/Partial/ProductModalStockHistory.cshtml]

@@ -16,7 +16,10 @@ namespace JengApp.Models
         {
         }
 
+        public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Orderdetail> Orderdetails { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Stockhistory> Stockhistories { get; set; }
 
@@ -34,6 +37,31 @@ namespace JengApp.Models
             modelBuilder.UseCollation("utf8mb4_general_ci")
                 .HasCharSet("utf8mb4");
 
+            modelBuilder.Entity<Cart>(entity =>
+            {
+                entity.ToTable("cart");
+
+                entity.Property(e => e.CartId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("CartID");
+
+                entity.Property(e => e.CmockStock)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("CMockStock");
+
+                entity.Property(e => e.CmockTotal)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("CMockTotal");
+
+                entity.Property(e => e.Cquantity)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("CQuantity");
+
+                entity.Property(e => e.ProdId)
+                    .HasColumnType("int(11)")
+                    .HasColumnName("ProdID");
+            });
+
             modelBuilder.Entity<Category>(entity =>
             {
                 entity.ToTable("category");
@@ -45,6 +73,33 @@ namespace JengApp.Models
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(500);
+            });
+
+            modelBuilder.Entity<Order>(entity =>
+            {
+                entity.ToTable("order");
+
+                entity.Property(e => e.OrderId).HasColumnType("int(11)");
+
+                entity.Property(e => e.Datepurchased)
+                    .IsRequired()
+                    .HasMaxLength(60);
+            });
+
+            modelBuilder.Entity<Orderdetail>(entity =>
+            {
+                entity.HasKey(e => e.OrderDetailsId)
+                    .HasName("PRIMARY");
+
+                entity.ToTable("orderdetail");
+
+                entity.Property(e => e.OrderDetailsId).HasColumnType("int(11)");
+
+                entity.Property(e => e.OrderId).HasColumnType("int(11)");
+
+                entity.Property(e => e.ProductId).HasColumnType("int(11)");
+
+                entity.Property(e => e.Quantity).HasColumnType("int(11)");
             });
 
             modelBuilder.Entity<Product>(entity =>
