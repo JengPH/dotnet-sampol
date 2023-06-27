@@ -247,7 +247,7 @@ namespace JengApp.Controllers
         public ActionResult<List<Stockhistory>> getAllOrderDetails(int id){
             var res = 
             (
-                from od in _context.Orderdetails
+               from od in _context.Orderdetails
                 join p in _context.Products on od.ProductId equals p.Id
                 join o in _context.Orders on od.OrderId equals o.OrderId
                 where o.OrderId == id
@@ -255,11 +255,18 @@ namespace JengApp.Controllers
                 select new orderinfo
                 {
                     productName = p.Name,
+                    prodUnit = p.Units,
+                    prodPrice = p.Price,
                     OrderDetailsId = od.OrderDetailsId,
                     OrderId = o.OrderId,
                     ProductId = p.Id,
                     Quantity = od.Quantity,
-                    ProductTotal = od.ProductTotal
+                    ProductTotal = od.ProductTotal,
+                    subTotal = o.SubTotal,
+                    deduction = o.Deduction,
+                    totalAmount = o.TotalAmount,
+                    paidAmount = o.PaidAmount,
+                    sukli = o.Sukli
                 }
             ).ToList();
 

@@ -44,6 +44,7 @@
 @Html.Partial("Partial/ProductModalCartList")
 @Html.Partial("Partial/ProductModalRecords")
 @Html.Partial("Partial/ProductModalRecordDetails")
+@Html.Partial("Partial/ProductModalReceipt")
 
 
 <script>
@@ -1180,6 +1181,7 @@
           //AFTER ANI KAY MAG CLEAR NATAS CART
           //ALSO, MAG MINUS TA SA STOCKS
           clearCart();
+          populateReceipt(orderID);
         });
       });
     }
@@ -1213,12 +1215,49 @@ function getAllOrderList()
       columns:
       [
         { data: 'orderId'},
-        { data: "subTotal"},
-        { data: "discountPercent"},
-        { data: "deduction"},
-        { data: "totalAmount"},
-        { data: "paidAmount"},
-        { data: "sukli"},
+        { 
+          data: null,
+          render: function(data, type, row){
+            var customString = '₱' + data.subTotal;
+            return customString;
+          }
+        },
+        { 
+          data: null,
+          render: function(data, type, row){
+            var customString = data.discountPercent + '%';
+            return customString;
+          }
+        },
+        { 
+          data: null,
+          render: function(data, type, row) {
+                    // You can manipulate the row data and construct the custom string here
+                    var customString = '₱' + data.deduction;
+                    return customString;
+          }
+        },
+        { 
+          data: null,
+          render: function(data, type, row){
+            var customString = '₱' + data.totalAmount;
+            return customString;
+          }
+        },
+        {
+          data: null,
+          render: function(data, type, row){
+            var customString = '₱' + data.paidAmount;
+            return customString;
+          }
+        },
+        { 
+          data: null,
+          render: function(data, type, row){
+            var customString = '₱' + data.sukli;
+            return customString;
+          }
+        },
         { data: "datepurchased"},
         { 
           data: 'orderId',
@@ -1263,11 +1302,17 @@ function showOrderDetails(orderId)
         dataSrc: ''
       },
       columns:
-      [
+     [
         { data: 'orderId'},
         { data: 'productName'},
         { data: 'quantity'},
-        { data: 'productTotal'},
+        { 
+          data: null,
+          render: function(data, type, row){
+            var customString = '₱' + data.productTotal;
+            return customString;
+          }
+        },
       ]
   });
   }
@@ -1276,6 +1321,75 @@ function showOrderDetails(orderId)
 $("#modalOrderHistoryDetailClose").click(function(){
       $("#modalOrderHistoryDetail").modal("toggle");
     });
+
+    //PRINT RECEIPT SECTION
+      
+      function populateReceipt(orderID)
+      {
+        //populate data here
+        
+        document.querySelector(".parentReceipt").innerHTML = "";
+        //document.querySelector(".oID").innerHTML = "yawa";
+
+        /*
+        var template = document.querySelector("template#prodReceipt");
+        var parent = document.querySelector(".parentReceipt");
+        var cloned = template.content.cloneNode(true);
+        */
+
+        $.ajax
+        ({
+          url: "../api/newapi/getAllOrderDetails",
+          type: "POST",
+          data:
+          {
+            id : orderID
+          },
+        })
+        .done(function(item)
+        {
+          console.log(item);
+
+          item.forEach(function(receipt){
+          var template = document.querySelector("template#prodReceipt");
+          var parent = document.querySelector(".parentReceipt");
+          var cloned = template.content.cloneNode(true);
+
+            console.log(receipt.productName);
+            cloned.querySelector(".receiptPName").innerHTML = receipt.productName;
+            cloned.querySelector(".receiptPCat").innerHTML = receipt.prodUnit + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"
+            + "₱"+receipt.prodPrice + "&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;"
+            + "₱"+ receipt.productTotal
+            ;
+
+            cloned.querySelector(".receiptPQuantity").innerHTML = receipt.quantity + " item(s)";
+
+            document.querySelector(".oID").innerHTML ="Order ID: " +  receipt.orderId;
+            document.querySelector(".receiptSubTotal").innerHTML = "Sub Total : &emsp;₱ " + receipt.subTotal;
+            document.querySelector(".receiptDiscount").innerHTML = "Discount  : &emsp;&nbsp-₱" + receipt.deduction;
+
+            document.querySelector(".receiptTotal").innerHTML = "Order Total : &emsp;&emsp;₱ " + receipt.totalAmount;
+            document.querySelector(".receiptCash").innerHTML = "Cash         : &emsp;&emsp;&emsp;₱ " + receipt.paidAmount;
+            document.querySelector(".receiptChange").innerHTML = "Change : &emsp;&emsp;₱ " + receipt.sukli;
+
+            document.querySelector(".receiptGesture").innerHTML = "[Thank You For Shopping at JengMart]";
+            parent.prepend(cloned);
+            });
+          
+          printResult();
+        });
+      }
+
+      function printResult()
+      {
+        var DocumentContainer = document.getElementById('receiptContent');
+        var WindowObject = window.open('', "PrintWindow", "toolbars=no,scrollbars=yes,status=no,resizable=yes");
+        WindowObject.document.writeln(DocumentContainer.innerHTML);
+        WindowObject.document.close();
+        WindowObject.focus();
+        WindowObject.print();
+        WindowObject.close();
+      }
 
 
     //PART OF DOCUMENT.READY DON'T TOUCH

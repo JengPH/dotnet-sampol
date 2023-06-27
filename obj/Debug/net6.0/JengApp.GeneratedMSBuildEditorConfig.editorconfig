@@ -55,6 +55,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnZVxQYXJ0aWFsXFByb2R1Y3RNb2RhbERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Jeng/Documents/CRUD Midterm/JengApp/Views/Page/Partial/ProductModalReceipt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnZVxQYXJ0aWFsXFByb2R1Y3RNb2RhbFJlY2VpcHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Jeng/Documents/CRUD Midterm/JengApp/Views/Page/Partial/ProductModalRecordDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGFnZVxQYXJ0aWFsXFByb2R1Y3RNb2RhbFJlY29yZERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
